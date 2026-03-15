@@ -100,51 +100,44 @@ Everything is stored locally in your browser:
 ## ✨ What You Get
 
 <div style="background: #f8f9fa; padding: 25px; border-radius: 12px; border: 1px solid #e0e0e0;">
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-    
-    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #1f4788; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-      <h4 style="color: #1f4788; margin-top: 0; display: flex; align-items: center; gap: 8px;">
-        <span>🗣️</span> Natural Language Input
-      </h4>
-      <p style="margin-bottom: 0;">Describe what you want in plain English. CommandBrain generates the right command automatically.</p>
-    </div>
-
-    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #2d5016; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-      <h4 style="color: #2d5016; margin-top: 0; display: flex; align-items: center; gap: 8px;">
-        <span>🛡️</span> Safety First
-      </h4>
-      <p style="margin-bottom: 0;">Classify commands as <code>safe</code>, <code>caution</code>, or <code>dangerous</code>. Preview before execution.</p>
-    </div>
-
-    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #434343; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-      <h4 style="color: #434343; margin-top: 0; display: flex; align-items: center; gap: 8px;">
-        <span>💾</span> Saved Commands
-      </h4>
-      <p style="margin-bottom: 0;">Organize with folders, tags, notes. Search and filter. Never lose a command again.</p>
-    </div>
-
-    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #1f4788; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-      <h4 style="color: #1f4788; margin-top: 0; display: flex; align-items: center; gap: 8px;">
-        <span>📊</span> Analytics
-      </h4>
-      <p style="margin-bottom: 0;">Track patterns, trends, and execution stats over time with visual charts and tables.</p>
-    </div>
-
-    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #2d5016; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-      <h4 style="color: #2d5016; margin-top: 0; display: flex; align-items: center; gap: 8px;">
-        <span>🔔</span> Smart Reminders
-      </h4>
-      <p style="margin-bottom: 0;">Auto-suggest frequently used commands. Snooze for 1 or 7 days with one click.</p>
-    </div>
-
-    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #434343; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-      <h4 style="color: #434343; margin-top: 0; display: flex; align-items: center; gap: 8px;">
-        <span>🎬</span> YouTube Specialist
-      </h4>
-      <p style="margin-bottom: 0;">Intelligent <code>yt-dlp</code> recipe generation. Download, convert, audio-only, with refinement.</p>
-    </div>
-
-  </div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+<div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #1f4788; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+<h4 style="color: #1f4788; margin-top: 0; display: flex; align-items: center; gap: 8px;">
+<span>🗣️</span> Natural Language Input
+</h4>
+<p style="margin-bottom: 0;">Describe what you want in plain English. CommandBrain generates the right command automatically.</p>
+</div>
+<div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #2d5016; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+<h4 style="color: #2d5016; margin-top: 0; display: flex; align-items: center; gap: 8px;">
+<span>🛡️</span> Safety First
+</h4>
+<p style="margin-bottom: 0;">Classify commands as <code>safe</code>, <code>caution</code>, or <code>dangerous</code>. Preview before execution.</p>
+</div>
+<div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #434343; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+<h4 style="color: #434343; margin-top: 0; display: flex; align-items: center; gap: 8px;">
+<span>💾</span> Saved Commands
+</h4>
+<p style="margin-bottom: 0;">Organize with folders, tags, notes. Search and filter. Never lose a command again.</p>
+</div>
+<div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #1f4788; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+<h4 style="color: #1f4788; margin-top: 0; display: flex; align-items: center; gap: 8px;">
+<span>📊</span> Analytics
+</h4>
+<p style="margin-bottom: 0;">Track patterns, trends, and execution stats over time with visual charts and tables.</p>
+</div>
+<div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #2d5016; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+<h4 style="color: #2d5016; margin-top: 0; display: flex; align-items: center; gap: 8px;">
+<span>🔔</span> Smart Reminders
+</h4>
+<p style="margin-bottom: 0;">Auto-suggest frequently used commands. Snooze for 1 or 7 days with one click.</p>
+</div>
+<div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #434343; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+<h4 style="color: #434343; margin-top: 0; display: flex; align-items: center; gap: 8px;">
+<span>🎬</span> YouTube Specialist
+</h4>
+<p style="margin-bottom: 0;">Intelligent <code>yt-dlp</code> recipe generation. Download, convert, audio-only, with refinement.</p>
+</div>
+</div>
 </div>
 
 ---
