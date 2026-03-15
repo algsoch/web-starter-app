@@ -99,38 +99,52 @@ Everything is stored locally in your browser:
 
 ## ✨ What You Get
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 30px 0;">
+<div style="background: #f8f9fa; padding: 25px; border-radius: 12px; border: 1px solid #e0e0e0;">
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+    
+    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #1f4788; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+      <h4 style="color: #1f4788; margin-top: 0; display: flex; align-items: center; gap: 8px;">
+        <span>🗣️</span> Natural Language Input
+      </h4>
+      <p style="margin-bottom: 0;">Describe what you want in plain English. CommandBrain generates the right command automatically.</p>
+    </div>
 
-<div style="background: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid #1f4788;">
-<h4 style="color: #1f4788; margin-top: 0;">🗣️ Natural Language Input</h4>
-<p>Describe what you want in plain English. CommandBrain generates the right command automatically.</p>
-</div>
+    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #2d5016; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+      <h4 style="color: #2d5016; margin-top: 0; display: flex; align-items: center; gap: 8px;">
+        <span>🛡️</span> Safety First
+      </h4>
+      <p style="margin-bottom: 0;">Classify commands as <code>safe</code>, <code>caution</code>, or <code>dangerous</code>. Preview before execution.</p>
+    </div>
 
-<div style="background: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid #2d5016;">
-<h4 style="color: #2d5016; margin-top: 0;">🛡️ Safety First</h4>
-<p>Classify commands as <code>safe</code>, <code>caution</code>, or <code>dangerous</code>. Preview before execution.</p>
-</div>
+    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #434343; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+      <h4 style="color: #434343; margin-top: 0; display: flex; align-items: center; gap: 8px;">
+        <span>💾</span> Saved Commands
+      </h4>
+      <p style="margin-bottom: 0;">Organize with folders, tags, notes. Search and filter. Never lose a command again.</p>
+    </div>
 
-<div style="background: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid #434343;">
-<h4 style="color: #434343; margin-top: 0;">💾 Saved Commands</h4>
-<p>Organize with folders, tags, notes. Search and filter. Never lose a command again.</p>
-</div>
+    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #1f4788; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+      <h4 style="color: #1f4788; margin-top: 0; display: flex; align-items: center; gap: 8px;">
+        <span>📊</span> Analytics
+      </h4>
+      <p style="margin-bottom: 0;">Track patterns, trends, and execution stats over time with visual charts and tables.</p>
+    </div>
 
-<div style="background: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid #1f4788;">
-<h4 style="color: #1f4788; margin-top: 0;">📊 Analytics</h4>
-<p>Track patterns, trends, and execution stats over time with visual charts and tables.</p>
-</div>
+    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #2d5016; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+      <h4 style="color: #2d5016; margin-top: 0; display: flex; align-items: center; gap: 8px;">
+        <span>🔔</span> Smart Reminders
+      </h4>
+      <p style="margin-bottom: 0;">Auto-suggest frequently used commands. Snooze for 1 or 7 days with one click.</p>
+    </div>
 
-<div style="background: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid #2d5016;">
-<h4 style="color: #2d5016; margin-top: 0;">🔔 Smart Reminders</h4>
-<p>Auto-suggest frequently used commands. Snooze for 1 or 7 days with one click.</p>
-</div>
+    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #434343; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+      <h4 style="color: #434343; margin-top: 0; display: flex; align-items: center; gap: 8px;">
+        <span>🎬</span> YouTube Specialist
+      </h4>
+      <p style="margin-bottom: 0;">Intelligent <code>yt-dlp</code> recipe generation. Download, convert, audio-only, with refinement.</p>
+    </div>
 
-<div style="background: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid #434343;">
-<h4 style="color: #434343; margin-top: 0;">🎬 YouTube Specialist</h4>
-<p>Intelligent <code>yt-dlp</code> recipe generation. Download, convert, audio-only, with refinement.</p>
-</div>
-
+  </div>
 </div>
 
 ---
@@ -276,29 +290,22 @@ Cross-Origin-Embedder-Policy: credentialless
 
 ---
 
-## 👤 Architecture & Code
+## 🏗️ Architecture & Code
 
-<div style="background: #f8f9fa; padding: 25px; border-radius: 10px; margin: 30px 0; border: 1px solid #e0e0e0;">
+<div style="background: #f8f9fa; padding: 25px; border-radius: 12px; margin: 30px 0; border: 1px solid #e0e0e0; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
 
-<div style="display: flex; align-items: center; gap: 20px;">
-  <img src="https://github.com/algsoch.png" width="80" height="80" style="border-radius: 50%; border: 2px solid #1f4788;" alt="Vicky Kumar">
-  <div>
-    <h3 style="margin: 0; color: #1f4788;">Vicky Kumar</h3>
-    <p style="margin: 5px 0 10px 0; color: #555;">Lead Architect & Developer</p>
-    <div style="display: flex; gap: 10px;">
-      <a href="https://github.com/algsoch">
-        <img src="https://img.shields.io/badge/GitHub-algsoch-181717?style=flat&logo=github" alt="GitHub">
-      </a>
-      <a href="https://linkedin.com/in/algsoch">
-        <img src="https://img.shields.io/badge/LinkedIn-algsoch-0077B5?style=flat&logo=linkedin" alt="LinkedIn">
-      </a>
-    </div>
-  </div>
-</div>
-
-<p style="margin-top: 20px; color: #333;">
-  Built to solve the problem of repetitive AI prompting by creating an offline-first memory layer for system commands.
+<p style="color: #444; font-size: 1.1em; line-height: 1.6; margin-bottom: 20px;">
+  Built to solve the problem of repetitive AI prompting by creating an <strong>offline-first</strong> memory layer for system commands.
+  CommandBrain runs entirely locally in the browser, ensuring your data never leaves your device unless you explicitely share it.
 </p>
+
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+  <img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB" alt="React" />
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white" alt="Tailwind" />
+  <img src="https://img.shields.io/badge/OpenAI_API-412991?style=flat-square&logo=openai&logoColor=white" alt="OpenAI" />
+</div>
 
 </div>
 
