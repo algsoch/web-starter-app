@@ -2,7 +2,7 @@
 
 **An offline-first command memory + execution copilot.** Never repeat the same command twice.
 
-<div style="margin: 20px 0; text-align: center;">
+<div style="margin: 20px 0;" align="center">
   <a href="https://github.com/RunanywhereAI/runanywhere-sdks">
     <img alt="RunAnywhere SDK" src="https://img.shields.io/badge/RunAnywhere-SDK-1f4788?style=flat-square" />
   </a>
@@ -276,25 +276,43 @@ Cross-Origin-Embedder-Policy: credentialless
 
 ---
 
-## 👤 Creator
+## 👤 Architecture & Code
 
-**Vicky Kumar** | [@algsoch](https://github.com/algsoch)
+<div style="background: #f8f9fa; padding: 25px; border-radius: 10px; margin: 30px 0; border: 1px solid #e0e0e0;">
 
-- **GitHub:** https://github.com/algsoch
-- **LinkedIn:** https://www.linkedin.com/in/algsoch
-- **Email:** npdimagine@gmail.com
+<div style="display: flex; align-items: center; gap: 20px;">
+  <img src="https://github.com/algsoch.png" width="80" height="80" style="border-radius: 50%; border: 2px solid #1f4788;" alt="Vicky Kumar">
+  <div>
+    <h3 style="margin: 0; color: #1f4788;">Vicky Kumar</h3>
+    <p style="margin: 5px 0 10px 0; color: #555;">Lead Architect & Developer</p>
+    <div style="display: flex; gap: 10px;">
+      <a href="https://github.com/algsoch">
+        <img src="https://img.shields.io/badge/GitHub-algsoch-181717?style=flat&logo=github" alt="GitHub">
+      </a>
+      <a href="https://linkedin.com/in/algsoch">
+        <img src="https://img.shields.io/badge/LinkedIn-algsoch-0077B5?style=flat&logo=linkedin" alt="LinkedIn">
+      </a>
+    </div>
+  </div>
+</div>
 
-Building intelligent command execution tools for developers.
+<p style="margin-top: 20px; color: #333;">
+  Built to solve the problem of repetitive AI prompting by creating an offline-first memory layer for system commands.
+</p>
+
+</div>
 
 ---
 
 ## 📌 Ecosystem
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 25px 0;">
-<img alt="RunAnywhere" src="https://img.shields.io/badge/RunAnywhere-1f4788?style=flat-square&logo=github&logoColor=white" />
-<img alt="Singularity" src="https://img.shields.io/badge/Singularity-2d5016?style=flat-square" />
-<img alt="Offline AI" src="https://img.shields.io/badge/Offline%20AI-434343?style=flat-square" />
-<img alt="CommandBrain" src="https://img.shields.io/badge/CommandBrain-1f4788?style=flat-square" />
+  <a href="https://github.com/RunanywhereAI/runanywhere-sdks">
+    <img alt="RunAnywhere SDK" src="https://img.shields.io/badge/RunAnywhere%20SDK-1f4788?style=flat-square&logo=github&logoColor=white" />
+  </a>
+  <img alt="Singularity" src="https://img.shields.io/badge/Singularity-2d5016?style=flat-square" />
+  <img alt="Offline AI" src="https://img.shields.io/badge/Offline%20AI-434343?style=flat-square" />
+  <img alt="CommandBrain" src="https://img.shields.io/badge/CommandBrain-1f4788?style=flat-square" />
 </div>
 
 **SDK Repository:** https://github.com/RunanywhereAI/runanywhere-sdks
@@ -307,11 +325,21 @@ MIT
 
 ---
 
-<div align="center" style="margin-top: 60px; padding: 30px 0; border-top: 1px solid #e0e0e0;">
+<div align="center" style="margin-top: 60px; padding: 40px 0; border-top: 1px solid #e0e0e0; color: #555;">
 
-**Made with ❤️ by Vicky Kumar**
+<div style="margin-bottom: 20px;">
+  <a href="https://github.com/algsoch">
+    <img src="https://github.com/algsoch.png" width="60" height="60" style="border-radius: 50%; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" alt="Vicky Kumar">
+  </a>
+</div>
 
-[GitHub](https://github.com/algsoch) • [LinkedIn](https://linkedin.com/in/algsoch) • [Email](mailto:npdimagine@gmail.com)
+**Architected by Vicky Kumar**
+
+<p style="margin-top: 10px;">
+  <a href="https://github.com/algsoch" style="text-decoration: none; color: #333; margin: 0 10px;">GitHub</a> • 
+  <a href="https://linkedin.com/in/algsoch" style="text-decoration: none; color: #0077B5; margin: 0 10px;">LinkedIn</a> • 
+  <a href="mailto:npdimagine@gmail.com" style="text-decoration: none; color: #d93025; margin: 0 10px;">Email</a>
+</p>
 
 © 2026 RunAnywhere CommandBrain
 
