@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: runanywhere-web-starter
+    env: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    headers:
+      # Required for SharedArrayBuffer / WASM threads in browsers
+      - path: /*
+        name: Cross-Origin-Opener-Policy
+        value: same-origin
+      - path: /*
+        name: Cross-Origin-Embedder-Policy
+        value: credentialless
+      # Correct MIME type + long-term cache for WASM binaries
+      - path: /assets/*.wasm
+        name: Content-Type
+        value: application/wasm
+      - path: /assets/*.wasm
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+    routes:
+      # SPA fallback — React Router / client-side navigation
+      - type: rewrite
+        source: /*
+        destination: /index.html
