@@ -20,13 +20,19 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+html,
+body,
+#root {
+  height: 100%;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background: var(--bg);
   color: var(--text);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: hidden;
 }
 
 /* ---------------------------------------------------------------------------
@@ -129,6 +135,8 @@ body {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  min-height: 0;
+  min-width: 0;
 }
 
 .tab-panel {
@@ -136,6 +144,8 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  min-height: 0;
+  min-width: 0;
 }
 
 /* ---------------------------------------------------------------------------
@@ -494,6 +504,9 @@ body {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  min-height: 0;
+  scrollbar-gutter: stable;
+  overscroll-behavior: contain;
 }
 
 .commandbrain-header {
@@ -1756,6 +1769,7 @@ body {
   font-size: 13px;
   font-family: 'Courier New', monospace;
   resize: vertical;
+  scrollbar-gutter: stable;
 }
 
 .macro-form-actions {

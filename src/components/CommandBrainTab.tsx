@@ -116,6 +116,7 @@ export function CommandBrainTab() {
   
   const inputRef = useRef<HTMLInputElement>(null);
   const noticeTimeoutRef = useRef<number | null>(null);
+  const importFileInputRef = useRef<HTMLInputElement>(null);
 
   // Initialize CommandBrain and load suggestions
   useEffect(() => {
@@ -244,12 +245,23 @@ export function CommandBrainTab() {
     }
   };
 
+  const sanitizeMacroTrigger = (value: string): string => {
+    return value
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9\s_-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '')
+      .slice(0, 80);
+  };
+
   const openMacroForm = () => {
     const seed = preview?.command.naturalLanguage || input.trim() || history[0]?.naturalLanguage || '';
     const defaultName = seed ? seed.slice(0, 48) : `Macro ${new Date().toLocaleTimeString()}`;
     setMacroFormName(defaultName);
     setMacroFormDescription('Batch execution macro');
-    setMacroFormTrigger(defaultName.toLowerCase().replace(/\s+/g, '-'));
+    setMacroFormTrigger(sanitizeMacroTrigger(defaultName));
     setMacroFormCommands(seed);
     setMacroFormError('');
     setMacroFormOpen(true);
@@ -626,19 +638,38 @@ export function CommandBrainTab() {
   const createMacro = async () => {
     const name = macroFormName.trim();
     const description = macroFormDescription.trim() || 'Batch execution macro';
-    const trigger = (macroFormTrigger.trim() || name.toLowerCase().replace(/\s+/g, '-')).slice(0, 80);
+    const trigger = sanitizeMacroTrigger(macroFormTrigger.trim() || name);
     const commands = macroFormCommands
       .split(/\r?\n|\|/)
       .map((c) => c.trim())
       .filter(Boolean);
+
+    setMacroFormError('');
 
     if (!name) {
       setMacroFormError('Macro name is required.');
       return;
     }
 
+    if (!trigger) {
+      setMacroFormError('Trigger must include letters or numbers.');
+      return;
+    }
+
     if (commands.length === 0) {
       setMacroFormError('Add at least one command line.');
+      return;
+    }
+
+    const duplicateName = macros.some((m) => m.name.trim().toLowerCase() === name.toLowerCase());
+    if (duplicateName) {
+      setMacroFormError('Macro name already exists. Pick a different name.');
+      return;
+    }
+
+    const duplicateTrigger = macros.some((m) => m.trigger.trim().toLowerCase() === trigger.toLowerCase());
+    if (duplicateTrigger) {
+      setMacroFormError('Macro trigger already exists. Pick a different trigger.');
       return;
     }
 
@@ -649,9 +680,39 @@ export function CommandBrainTab() {
       setMacroFormOpen(false);
       showNotice(`Macro created: ${name} (${commands.length} command${commands.length > 1 ? 's' : ''}).`, 'success');
     } catch (err) {
-      const raw = err instanceof Error ? err.message : String(err);
+      const raw = err instanceof Error ? err.message : err == null ? '' : String(err);
       const duplicate = /constraint|duplicate|already exists|key already exists/i.test(raw);
-      setMacroFormError(duplicate ? 'Macro name already exists. Pick a different name.' : `Failed to create macro: ${raw}`);
+      setMacroFormError(
+        duplicate
+          ? 'Macro name already exists. Pick a different name.'
+          : `Failed to create macro: ${raw || 'Unexpected storage error. Please try a different name/trigger.'}`
+      );
+    }
+  };
+
+  const handleImportDataFile = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    const proceed = window.confirm(
+      'Import will merge this JSON into your current local data. Continue?'
+    );
+    if (!proceed) {
+      event.target.value = '';
+      return;
+    }
+
+    try {
+      const jsonData = await file.text();
+      await CommandBrain.importData(jsonData);
+      await Promise.all([loadHistory(), loadMacros(), loadFavorites(), loadStats()]);
+      setDataStale(false);
+      showNotice(`Imported data from ${file.name}.`, 'success');
+    } catch (err) {
+      const message = err instanceof Error ? err.message : err == null ? '' : String(err);
+      showNotice(`Import failed: ${message || 'Invalid JSON or storage error.'}`, 'error');
+    } finally {
+      event.target.value = '';
     }
   };
 
@@ -3125,6 +3186,21 @@ export function CommandBrainTab() {
           </div>
 
           <div className="settings-actions">
+            <input
+              ref={importFileInputRef}
+              type="file"
+              accept=".json,application/json"
+              onChange={handleImportDataFile}
+              style={{ display: 'none' }}
+            />
+
+            <button
+              className="btn"
+              onClick={() => importFileInputRef.current?.click()}
+            >
+              Import Data
+            </button>
+
             <button 
               className="btn"
               onClick={async () => {
