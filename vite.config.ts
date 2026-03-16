@@ -1,10 +1,26 @@
-import { defineConfig, type Plugin } from 'vite';
+import { createLogger, defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
 
 const __dir = path.dirname(fileURLToPath(import.meta.url));
+
+const logger = createLogger();
+const originalWarn = logger.warn;
+logger.warn = (msg, options) => {
+  const text = typeof msg === 'string' ? msg : msg.message;
+  const isRunAnywhereSourceMapNoise =
+    text.includes('Sourcemap for') &&
+    (text.includes('node_modules/@runanywhere/web-llamacpp/') ||
+      text.includes('node_modules/@runanywhere/web-onnx/'));
+
+  if (isRunAnywhereSourceMapNoise) {
+    return;
+  }
+
+  originalWarn(msg, options);
+};
 
 /**
  * Copies WASM binaries from the @runanywhere npm packages into dist/assets/
@@ -60,6 +76,7 @@ function copyWasmPlugin(): Plugin {
 }
 
 export default defineConfig({
+  customLogger: logger,
   plugins: [react(), copyWasmPlugin()],
   server: {
     headers: {

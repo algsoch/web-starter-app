@@ -7,7 +7,47 @@ interface ModelLoaderResult {
   state: LoaderState;
   progress: number;
   error: string | null;
+  cachedModelName: string | null;
+  lastLoadedAt: number | null;
   ensure: () => Promise<boolean>;
+}
+
+interface ModelLoadCacheInfo {
+  modelId: string;
+  modelName: string;
+  loadedAt: number;
+}
+
+function getCacheKey(category: ModelCategory): string {
+  return `runanywhere_model_cache_${category}`;
+}
+
+function readCacheInfo(category: ModelCategory): ModelLoadCacheInfo | null {
+  if (typeof window === 'undefined') return null;
+
+  try {
+    const raw = localStorage.getItem(getCacheKey(category));
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as ModelLoadCacheInfo;
+    if (!parsed.modelId || !parsed.modelName || !parsed.loadedAt) return null;
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
+function writeCacheInfo(category: ModelCategory, info: ModelLoadCacheInfo): void {
+  if (typeof window === 'undefined') return;
+  localStorage.setItem(getCacheKey(category), JSON.stringify(info));
+}
+
+export function getModelCacheInfo(category: ModelCategory): ModelLoadCacheInfo | null {
+  return readCacheInfo(category);
+}
+
+export function clearModelCacheInfo(category: ModelCategory): void {
+  if (typeof window === 'undefined') return;
+  localStorage.removeItem(getCacheKey(category));
 }
 
 /**
@@ -18,11 +58,14 @@ interface ModelLoaderResult {
  * @param coexist  - If true, only unload same-category models (allows STT+LLM+TTS to coexist).
  */
 export function useModelLoader(category: ModelCategory, coexist = false): ModelLoaderResult {
+  const cached = readCacheInfo(category);
   const [state, setState] = useState<LoaderState>(() =>
     ModelManager.getLoadedModel(category) ? 'ready' : 'idle',
   );
   const [progress, setProgress] = useState(0);
   const [error, setError] = useState<string | null>(null);
+  const [cachedModelName, setCachedModelName] = useState<string | null>(cached?.modelName ?? null);
+  const [lastLoadedAt, setLastLoadedAt] = useState<number | null>(cached?.loadedAt ?? null);
   const loadingRef = useRef(false);
 
   const ensure = useCallback(async (): Promise<boolean> => {
@@ -66,6 +109,14 @@ export function useModelLoader(category: ModelCategory, coexist = false): ModelL
       setState('loading');
       const ok = await ModelManager.loadModel(model.id, { coexist });
       if (ok) {
+        const cacheInfo: ModelLoadCacheInfo = {
+          modelId: model.id,
+          modelName: model.name,
+          loadedAt: Date.now(),
+        };
+        writeCacheInfo(category, cacheInfo);
+        setCachedModelName(cacheInfo.modelName);
+        setLastLoadedAt(cacheInfo.loadedAt);
         setState('ready');
         return true;
       } else {
@@ -82,5 +133,5 @@ export function useModelLoader(category: ModelCategory, coexist = false): ModelL
     }
   }, [category, coexist]);
 
-  return { state, progress, error, ensure };
+  return { state, progress, error, cachedModelName, lastLoadedAt, ensure };
 }

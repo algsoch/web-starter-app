@@ -96,8 +96,8 @@ export async function initSDK(): Promise<void> {
   _initPromise = (async () => {
     // Step 1: Initialize core SDK (TypeScript-only, no WASM)
     await RunAnywhere.initialize({
-      environment: SDKEnvironment.Development,
-      debug: true,
+      environment: SDKEnvironment.Production,
+      debug: false,
     });
 
     // Step 2: Register backends (loads WASM automatically)
